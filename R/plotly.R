@@ -121,13 +121,17 @@ For more help, see https://plot.ly/R or contact <chris@plot.ly>.")
       stop("gg must be a ggplot")
     }
     pargs <- gg2list(gg)
-    if(interactive()){ # we are on the command line.
-      resp <- do.call(pub$plotly, pargs)
-      browseURL(resp$url)
-      list(data=pargs, response=resp)
-    }else{ # we are in knitr/RStudio.
-      do.call(pub$iplot, pargs)
+    r <- if(interactive())
+      { # we are on the command line.
+        resp <- do.call(pub$plotly, pargs)
+        browseURL(resp$url)
+        list(data=pargs, response=resp)
     }
+    else
+      { # we are in knitr/RStudio.
+        do.call(pub$iplot, pargs)
+      }
+    invisible(r)
   }
   pub$get_figure <- function(file_owner, file_id) {
     headers <- c("plotly-username"=pub$username,
