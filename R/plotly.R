@@ -124,7 +124,7 @@ For more help, see https://plot.ly/R or contact <chris@plot.ly>.")
     if(interactive()){ # we are on the command line.
       resp <- do.call(pub$plotly, pargs)
       browseURL(resp$url)
-      invisible(list(data=pargs, response=resp))
+      list(data=pargs, response=resp)
     }else{ # we are in knitr/RStudio.
       do.call(pub$iplot, pargs)
     }
@@ -168,6 +168,7 @@ For more help, see https://plot.ly/R or contact <chris@plot.ly>.")
       options[["url"]] <- r[["url"]]
       priv$plotly_hook(before, options, envir)
     })
+    list(data=..., response=r)
   }
   pub$embed <- function(url) {
     # knitr hook
