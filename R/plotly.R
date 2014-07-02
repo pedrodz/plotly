@@ -131,9 +131,7 @@ For more help, see https://plot.ly/R or contact <chris@plot.ly>.")
       browseURL(resp$url)
       invisible(list(data=pargs, response=resp))
     }else{ # we are in knitr/RStudio.
-      # do.call(pub$iplot, pargs)
-      # we are in the IR notebook
-      do.call(pub$irplot, pargs)
+      do.call(pub$iplot, pargs)
     }
   }
   pub$get_figure <- function(file_owner, file_id) {
