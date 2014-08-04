@@ -194,7 +194,7 @@ For more help, see https://plot.ly/R or contact <chris@plot.ly>.")
     h <- if (is.null(kwargs$height)) "525" else kwargs$height
     html <- paste("<iframe height=\"", h, "\" id=\"igraph\" scrolling=\"no\" seamless=\"seamless\"\n\t\t\t\tsrc=\"", 
                   r$url, "\" width=\"", w, "\" frameBorder=\"0\"></iframe>", sep="")
-    require(IRdisplay)
+    #require(IRdisplay)
     display_html(html)
   }
   pub$embed <- function(url) {

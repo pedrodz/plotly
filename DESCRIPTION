@@ -26,5 +26,6 @@ Depends:
 Imports:
     knitr
 Suggests:
+    IRdisplay,
     maps,
     testthat
